@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class APlusB {
 
-	static int sumOfTwoDigits(int first_digit, int second_digit) {
-		return first_digit + second_digit;
+	static int sumOfTwoDigits(int a, int b) {
+		return a + a;
 	}
 
 	public static void main(String[] args) {
