@@ -13,12 +13,14 @@ public class APlusB {
 
 		firstInteger = s.nextInt();
 		secondInteger = s.nextInt();
-		
+
+		sumOfTwoDigits(firstInteger, secondInteger);
 		s.close();
 
 	}
 
 	static int sumOfTwoDigits(int first, int second) {
+		System.out.println(first+second);
 		return first + second;
 
 	}
