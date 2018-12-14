@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class APlusB {
 
 	static int sumOfTwoDigits(int a, int b) {
-		return a + a;
+		return a + b;
 	}
 
 	public static void main(String[] args) {
