@@ -25,12 +25,9 @@ public class MaxPairwiseProduct {
 		Scanner s = new Scanner(System.in);
 
 		for (int i = 0; i < input.length; i++) {
-			
-			
-
-			
+			int[] holdMyCup s.nextInt();					
 		}
-		int input = s.nextInt();
+		
 		findMaxProd(input);
 
 	}
