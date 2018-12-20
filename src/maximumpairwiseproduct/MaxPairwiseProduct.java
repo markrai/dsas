@@ -4,32 +4,53 @@ import java.util.Scanner;
 
 public class MaxPairwiseProduct {
 
-	int product = 0;
-
-	static int findMaxProd(int[] input) {
-		int max = input[0];
-		for (int i : input) {
-
-			if (i > max) {
-				max = i;
-			}
-
-		}
-		System.out.println(max);
-		return max;
-	}
+	static int largest = 0;
+	static int product = 0;
+	static int initialNumber = 0;
 
 	public static void main(String[] args) {
 
-		int[] input = new int[10];
-		Scanner s = new Scanner(System.in);
+		String input;
 
-		for (int i = 0; i < input.length; i++) {
-			int[] holdMyCup s.nextInt();					
+		int[] inputIntArray = new int[100];
+
+		Scanner s1 = new Scanner(System.in);
+		initialNumber = s1.nextInt();
+
+		Scanner s2 = new Scanner(System.in);
+		input = s2.nextLine();
+
+		String[] inputStringArray = input.split(" ");
+
+		for (int i = 0; i < inputStringArray.length; i++) {
+
+			int n = Integer.parseInt(inputStringArray[i]);
+
+			if (n == initialNumber) {
+
+			} else {
+
+				inputIntArray[i] = Integer.parseInt(inputStringArray[i]);
+			}
 		}
-		
-		findMaxProd(input);
 
+		findMaxProd(initialNumber, inputIntArray);
+
+	}
+
+	static int findMaxProd(int initialNumber, int[] input) {
+		largest = input[0]; // start at first element of array
+
+		for (int i : input) {
+			if (i > largest) {
+				largest = i;
+			}
+		}
+
+		product = largest * initialNumber;
+
+		System.out.println(product);
+		return product;
 	}
 
 }
