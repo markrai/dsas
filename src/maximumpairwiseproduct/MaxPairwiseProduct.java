@@ -1,56 +1,108 @@
 package maximumpairwiseproduct;
 
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
 public class MaxPairwiseProduct {
 
-	static int largest = 0;
-	static int product = 0;
-	static int initialNumber = 0;
+    // slower methon O(n^2)
+    static long getMaxPairwiseProduct(int[] numbers) {
+        long result = 0;
+        int n = numbers.length;
+        for (int i = 0; i < n; ++i) {
+            for (int j = i + 1; j < n; ++j) {
+                if ((long)numbers[i] * numbers[j] > result) {
+                    result = (long)numbers[i] * numbers[j];
+                }
+            }
+        }
+        return result;
+    }
 
-	public static void main(String[] args) {
+    // faster method
+    static long getMaxPairwiseProductFast(int[] numbers) {
+        int nSize = numbers.length;
 
-		String input;
+        int max_index1 = -1;
+        for (int i = 0; i < nSize; i++) {
+            if ((max_index1 == -1) || (numbers[i] > numbers[max_index1]))
+                max_index1 = i;
+        }
 
-		int[] inputIntArray = new int[100];
+        int max_index2 = -1;
+        for (int j = 0; j < nSize; j++) {
+            if ((j != max_index1) && ((max_index2 == -1) || (numbers[j] > numbers[max_index2])))
+                max_index2 = j;
+        }
 
-		Scanner s1 = new Scanner(System.in);
-		initialNumber = s1.nextInt();
+        return (long)numbers[max_index1] * numbers[max_index2];
+    }
 
-		Scanner s2 = new Scanner(System.in);
-		input = s2.nextLine();
+    // main method
+    public static void main(String[] args) {
+        
+        FastScanner scanner = new FastScanner(System.in);
+        int n = scanner.nextInt();
+        int[] numbers = new int[n];
+        for (int i = 0; i < n; i++) {
+            numbers[i] = scanner.nextInt();
+        }
+        
+        System.out.println(getMaxPairwiseProductFast(numbers));
+        
 
-		String[] inputStringArray = input.split(" ");
+    /*
+    // stress test
+    while (true) {
+        Random ran = new Random();
+        int max = 5;
+        int min = 2;
+        int randomNum = ran.nextInt((max - min) + 1) + min;
+        System.out.println("Random number: " + randomNum);
+        int[] list = new int[randomNum];
+        for (int i = 0; i < randomNum; i++) {
+            list[i] = ran.nextInt((10) + 1);
+            System.out.println(list[i]);
+        }
+        System.out.println("");
+        double result1 = getMaxPairwiseProduct(list);
+        double result2 = getMaxPairwiseProductFast(list);
+        if (result1 != result2) {
+            System.out.println("Error! slow:  " + result1 + " fast: " + result2);
+            break;
+        } else {
+            System.out.println("OK");
+        }
+    }
+     */
+}
+    // scanning code
+    static class FastScanner {
+        BufferedReader br;
+        StringTokenizer st;
 
-		for (int i = 0; i < inputStringArray.length; i++) {
+        FastScanner(InputStream stream) {
+            try {
+                br = new BufferedReader(new InputStreamReader(stream));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
 
-			int n = Integer.parseInt(inputStringArray[i]);
+        String next() {
+            while (st == null || !st.hasMoreTokens()) {
+                try {
+                    st = new StringTokenizer(br.readLine());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            return st.nextToken();
+        }
 
-			if (n == initialNumber) {
-
-			} else {
-
-				inputIntArray[i] = Integer.parseInt(inputStringArray[i]);
-			}
-		}
-
-		findMaxProd(initialNumber, inputIntArray);
-
-	}
-
-	static int findMaxProd(int initialNumber, int[] input) {
-		largest = input[0]; // start at first element of array
-
-		for (int i : input) {
-			if (i > largest) {
-				largest = i;
-			}
-		}
-
-		product = largest * initialNumber;
-
-		System.out.println(product);
-		return product;
-	}
+        int nextInt() {
+            return Integer.parseInt(next());
+        }
+    }
 
 }
