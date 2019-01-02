@@ -7,36 +7,59 @@ public class gcd {
 	static int result = 0;
 	long firstNumber;
 	long secondNumber;
-	static long limit;
-
-	static public float calculateGCD(long firstNumber, long secondNumber) {
-
-		if (firstNumber < secondNumber) {
-			limit = firstNumber;
-		} else {
-			limit = secondNumber;
-		}
-
-		for (int i = 1; i < limit; i++) {
-			long result = firstNumber % i;
-			System.out.println(firstNumber + " divided into: " + i + " gives us the remainder:" + result);
-		}
-
-		return result;
-	}
 
 	public static void main(String[] args) {
 
 		Scanner s = new Scanner(System.in);
 		String stringInput = s.nextLine();
 		String[] stringArray = stringInput.split(" ");
-		int[] intArray = null;
+		int[] intArray = new int[2];
 
 		for (int i = 0; i < stringArray.length; i++) {
 			intArray[i] = Integer.parseInt(stringArray[i]);
 		}
 
 		calculateGCD(intArray[0], intArray[1]);
+	}
+
+	static public float calculateGCD(long firstNumber, long secondNumber) {
+
+		long largerNumber;
+		long smallerNumber;
+		long r = 0;
+		long q = 0;
+
+		if (firstNumber < secondNumber) {
+			largerNumber = secondNumber;
+			smallerNumber = firstNumber;
+		} else {
+			largerNumber = firstNumber;
+			smallerNumber = secondNumber;
+		}
+
+		if (largerNumber % smallerNumber == 0) {
+			q = (largerNumber / smallerNumber);
+			System.out.println("The GCD is: " + q);
+		} else {
+
+			r = largerNumber % smallerNumber;
+
+			while (r != 0) {
+
+				q = (largerNumber / smallerNumber);
+				r = largerNumber % smallerNumber;
+				if (r == 0) {
+					System.out.println("r is: " + r);
+					System.out.println("q is: " + q);
+					System.out.println(smallerNumber + " is the GCD");
+				}
+				largerNumber = smallerNumber;
+				smallerNumber = q;
+
+			}
+		}
+
+		return result;
 	}
 
 }
