@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class gcd {
 
-	static int result = 0;
 	long firstNumber;
 	long secondNumber;
 
@@ -29,6 +28,11 @@ public class gcd {
 		long r = 0;
 		long q = 0;
 
+		if (firstNumber == secondNumber) {
+			System.out.println(firstNumber);
+			return firstNumber;
+		}
+
 		if (firstNumber < secondNumber) {
 			largerNumber = secondNumber;
 			smallerNumber = firstNumber;
@@ -39,7 +43,7 @@ public class gcd {
 
 		if (largerNumber % smallerNumber == 0) {
 			q = (largerNumber / smallerNumber);
-			System.out.println("The GCD is: " + q);
+			System.out.println(q);
 		} else {
 
 			r = largerNumber % smallerNumber;
@@ -55,7 +59,8 @@ public class gcd {
 				}
 				r = largerNumber % smallerNumber;
 				if (r == 0) {
-					System.out.println(smallerNumber + " is the GCD");
+					System.out.println(smallerNumber);
+					return r;
 				}
 				largerNumber = smallerNumber;
 				smallerNumber = r;
@@ -63,7 +68,7 @@ public class gcd {
 			}
 		}
 
-		return result;
+		return r;
 	}
 
 }
