@@ -47,14 +47,18 @@ public class gcd {
 			while (r != 0) {
 
 				q = (largerNumber / smallerNumber);
+				if (smallerNumber == 1) {
+					System.out.println(r);
+
+					return r;
+
+				}
 				r = largerNumber % smallerNumber;
 				if (r == 0) {
-					System.out.println("r is: " + r);
-					System.out.println("q is: " + q);
 					System.out.println(smallerNumber + " is the GCD");
 				}
 				largerNumber = smallerNumber;
-				smallerNumber = q;
+				smallerNumber = r;
 
 			}
 		}
