@@ -28,6 +28,11 @@ public class gcd {
 		long r = 0;
 		long q = 0;
 
+		if (firstNumber == 1 || secondNumber == 1) {
+			System.out.println("1");
+			return 1;
+		}
+
 		if (firstNumber == secondNumber) {
 			System.out.println(firstNumber);
 			return firstNumber;
