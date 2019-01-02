@@ -1,11 +1,10 @@
-package week2.greatest_common_divisor;
+package week2.lcm;
 
 import java.util.Scanner;
 
-public class gcd {
+public class lcm {
 
-	long firstNumber;
-	long secondNumber;
+	static long gcd;
 
 	public static void main(String[] args) {
 
@@ -19,6 +18,18 @@ public class gcd {
 		}
 
 		calculateGCD(intArray[0], intArray[1]);
+		findLCM(intArray[0], intArray[1]);
+	}
+
+	public static long findLCM(long firstNumber, long secondNumber) {
+		long lcm = 0;
+		long gcd = calculateGCD(firstNumber, secondNumber);
+
+		long a = firstNumber / gcd;
+		lcm = a * secondNumber;
+		System.out.println(lcm);
+		return lcm;
+
 	}
 
 	static public long calculateGCD(long firstNumber, long secondNumber) {
@@ -29,12 +40,10 @@ public class gcd {
 		long q = 0;
 
 		if (firstNumber == 1 || secondNumber == 1) {
-			System.out.println("1");
 			return 1;
 		}
 
 		if (firstNumber == secondNumber) {
-			System.out.println(firstNumber);
 			return firstNumber;
 		}
 
@@ -48,7 +57,8 @@ public class gcd {
 
 		if (largerNumber % smallerNumber == 0) {
 			q = (largerNumber / smallerNumber);
-			System.out.println(q);
+			return q;
+
 		} else {
 
 			r = largerNumber % smallerNumber;
@@ -57,14 +67,11 @@ public class gcd {
 
 				q = (largerNumber / smallerNumber);
 				if (smallerNumber == 1) {
-					System.out.println(r);
-
 					return r;
 
 				}
 				r = largerNumber % smallerNumber;
 				if (r == 0) {
-					System.out.println(smallerNumber);
 					return smallerNumber;
 				}
 				largerNumber = smallerNumber;
