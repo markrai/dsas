@@ -1,9 +1,6 @@
-package fibonacci;
+package week2.fibonacci;
 
 import java.util.Scanner;
-
-// F0 = 0, F1 = 1, F2 = 1, F3 = 3...
-// 0 1 1 2 3 5 8 13
 
 public class fibonacci {
 
@@ -35,12 +32,13 @@ public class fibonacci {
 		for (int i = 2; i < input; i++) {
 
 			now = prevPrev + prev;
-			// System.out.println(now);
+
 			prevPrev = prev;
 			prev = now;
 		}
 
 		output = now;
+		output = Math.abs(output);
 		System.out.println(output);
 		return output;
 

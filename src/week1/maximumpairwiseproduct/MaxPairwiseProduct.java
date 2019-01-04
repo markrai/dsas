@@ -1,4 +1,4 @@
-package maximumpairwiseproduct;
+package week1.maximumpairwiseproduct;
 
 import java.util.*;
 import java.io.*;

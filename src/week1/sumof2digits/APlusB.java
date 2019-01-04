@@ -1,4 +1,4 @@
-package sumof2digits;
+package week1.sumof2digits;
 
 import java.util.Scanner;
 
